@@ -20,7 +20,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code to app/
-COPY . .
+COPY scraper.py .
 
 # CMD is called on `docker run` ; It runs the Python script and copies the resulting CSV to a cloud storage bucket.
 CMD ["sh", "-c", "python scraper.py && gsutil cp ./output/*.csv gs://{your_cloud_storage_bucket}"]
